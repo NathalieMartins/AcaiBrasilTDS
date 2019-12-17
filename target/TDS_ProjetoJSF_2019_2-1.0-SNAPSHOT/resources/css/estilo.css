@@ -1,0 +1,188 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28/11/2019, 01:55:30
+    Author     : nathalie
+*/
+body, td, th, a {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: italic;
+
+}
+
+h1{
+    text-align: center;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    margin-top: -410px;
+}
+body
+{
+    margin: 0;  	
+    padding: 0; 
+}
+
+
+/*th {
+        background: url(#{resource['imagens:fundo_claro.png']}); 
+        min-height: 25px;
+        padding: 3px;
+}
+*/
+img {
+    border:0px;
+}
+
+#acai{
+    margin-top: -300px;
+}
+
+#container {
+    width: 1301px;
+    height: 100%;
+    margin: 0 auto
+}
+
+#titulo {
+    float: left;
+    font-size: 25pt;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+#menu{
+    width: 1300px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -100px;
+    
+}
+#menu ul li { display: inline; }
+
+#menu ul {
+    padding:0px;
+    margin:40px;
+    background-color:#ffffff;
+    list-style:none;
+}
+
+#menu ul li a {
+
+    padding: 10px 10px;
+    display: inline-block;
+    margin-top: -350px;
+    /* visual do link */
+    color: #333;
+    text-decoration: none;
+    font-family: sans-serif;
+    border-bottom:3px solid #EDEDED;
+}
+
+
+
+#corpo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 300px;
+    
+}
+
+div.tres {
+    width:30px;
+    height:30px;
+    border: 25px solid; /* As 4 bordas sólidas com 25px de espessura */
+    border-color: #f00 #0f0 #00f #fc0; /* cores: topo, direita, inferior, esquerda */
+}
+
+* { margin: 0; padding: 0; }
+
+
+form {
+    /* Apenas para centralizar o form na página */
+    margin: 0 auto;
+    width: 500px;
+    /* Para ver as bordas do formulário */
+    padding: 1em;
+    margin-top: 5px;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background-color: white;
+}
+input, textarea {
+    /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
+    font: 1em sans-serif;
+    /* Para dar o mesmo tamanho a todos os campo de texto */
+    width: 300px;
+    height: 2em;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* Para harmonizar o look & feel das bordas nos campos de texto*/
+    border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+    /* Dar um pouco de destaque nos elementos ativos */
+    border-color: #000;
+}
+
+textarea {
+    /* Para alinhar corretamente os campos de texto de várias linhas com sua label*/
+    vertical-align: top;
+
+    /* Para dar espaço suficiente para digitar algum texto */
+    height: 5em;
+
+    /* Para permitir aos usuários redimensionarem qualquer textarea verticalmente. Ele não funciona em todos os browsers */
+    resize: vertical;
+}
+
+.button {
+    /* Para posicionar os botões para a mesma posição dos campos de texto */
+    padding-left: 100px; /* mesmo tamanho que os elementos do tipo label */
+}
+button {
+    /* Esta margem extra representa aproximadamente o mesmo espaço que o espaço entre as labels e os seus campos de texto*/
+    margin-left: .5em;
+}
+
+.info {
+    font-weight: bold;
+    color: green;
+}
+
+.warn {
+    font-weight: bold;
+    color: #FFCC00;
+}
+
+.fatal, .error {
+    font-weight: bold;
+    color: red;
+}
+
+/*CARROSSEL DE FOTOS*/
+.containerCarrossel{
+    width: 1300px;
+    height: 500px;
+    margin-top: -400px;
+    margin-bottom: 10px;
+    min-height: 300px;
+    margin-left: 25px;
+    margin-right: 25px;
+   background-image: url("resources/imagens/01.png");
+}
+
+.wall{  
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.wall:target{
+    display: block;
+}
