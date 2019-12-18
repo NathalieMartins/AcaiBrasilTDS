@@ -46,6 +46,13 @@ img {
     height: 100%;
     margin: 0 auto
 }
+ #logotipo {
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.imagens{
+    
+}
 
 #titulo {
     float: left;
