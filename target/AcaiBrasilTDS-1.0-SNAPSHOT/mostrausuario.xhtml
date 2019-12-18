@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <h:outputStylesheet library="css" name="estilo.css" />
+    <style type="text/css">
+        <!--
+        #logotipo {
+            margin-left: 20px;
+        }
+        -->
+    </style>
+
+
+    <h:head>
+        <title>Pagina Inicial</title>
+        <div id="container">
+            <div id="logotipo">
+                <h:graphicImage library="imagens" name="logo.png" />
+            </div>
+            <div id="menu">                 		
+                <ul>  			
+                    <ul>  			
+                        <li><a href="#wall-3">Produtos</a></li>  			
+                        <li><a href="#">Novidades</a></li>  			
+                        <li><a href="quemsomos.xhtml">Quem somos</a></li>  			
+                        <li><a href="cadastroUsuario.xhtml">Cadastro</a></li>  
+                        <li><a href="login.xhtml">Login</a></li>
+                    </ul>  		
+                </ul>  		
+            </div>
+        </div>
+    </h:head>
+    <h:body>
+        <h1>Bem-vindo, <h:outputText value="#{usuarioBean.nome}"/></h1>
+
+        <div class="conteiner-pai">
+            <div class="conteiner-tio">
+                <div class="conteiner-filho1">
+                    <div id="acai01" class="ver01">
+
+                    </div>
+                    <div id="acai02" class="ver02">
+
+                    </div>
+
+                    <div id="acai03" class="ver03">
+
+                    </div>
+                    <div id="acai04" class="ver04">
+
+                    </div>
+                </div>
+                    <h:form class="conteiner-item">
+                        <h:inputText id="descricao" label="descricao"/>
+                        <h:inputText id="sabores" label="sabores"/> 
+                        <h:inputText id="valor" label="valores"/>
+                        <p class="texto-acai">
+                            O mercado de açaí vem crescendo no Brasil e no mundo, e a rede Açaí 
+                            Brasil acompanha esta tendência graças à qualidade de seus produtos, 
+                            somada a um projeto arquitetônico prático e inovador de suas unidades 
+                            e a uma comunicação interativa com o seu público.
+                            Uma marca diferenciada, antenada ao seu público, que foge da mesmice
+                            e cai no gosto das pessoas. Traz o que é bom, saudável, 
+                            gostoso e o melhor "do seu jeito”.
+                        </p>
+
+                        <h:commandButton class="comprar" value="COMPRAR" />
+                    </h:form>
+            </div>
+
+            <div class="conteiner-filho2">
+                <button type="button" class="itens-ml" onclick="mudarV1()">150ml</button>
+                <button type="button" class="itens-ml" onclick="mudarV2()">300ml</button>
+                <button type="button" class="itens-ml" onclick="mudarV3()">450ml</button>
+                <button type="button" class="itens-ml" onclick="mudarV4()">500ml</button>
+            </div>
+        </div>
+        <h:outputScript library = "js" name = "meuscript.js" />
+    </h:body>
+</html>

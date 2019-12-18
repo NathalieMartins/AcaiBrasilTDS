@@ -195,7 +195,7 @@ textarea {
     width: 400px;
     display: flex; /* or inline-flex */ 
     flex-direction: column;
-    margin-top: -450px;
+    margin-top: -490px;
     margin-left: 700px;
     position: absolute;
 

@@ -51,30 +51,29 @@
 
                     </div>
                 </div>
+                    <h:form class="conteiner-item">
+                        <h:inputText id="descricao" label="descricao"/>
+                        <h:inputText id="sabores" label="sabores"/> 
+                        <h:inputText id="valor" label="valores"/>
+                        <p class="texto-acai">
+                            O mercado de açaí vem crescendo no Brasil e no mundo, e a rede Açaí 
+                            Brasil acompanha esta tendência graças à qualidade de seus produtos, 
+                            somada a um projeto arquitetônico prático e inovador de suas unidades 
+                            e a uma comunicação interativa com o seu público.
+                            Uma marca diferenciada, antenada ao seu público, que foge da mesmice
+                            e cai no gosto das pessoas. Traz o que é bom, saudável, 
+                            gostoso e o melhor "do seu jeito”.
+                        </p>
 
-                <div class="conteiner-item">
-                    <h:inputText id="descricao" label="descricao"/>
-                    <h:inputText id="sabores" label="sabores"/> 
-                    <h:inputText id="valor" label="valores"/>
-                    <p class="texto-acai">
-                        O mercado de açaí vem crescendo no Brasil e no mundo, e a rede Açaí 
-                        Brasil acompanha esta tendência graças à qualidade de seus produtos, 
-                        somada a um projeto arquitetônico prático e inovador de suas unidades 
-                        e a uma comunicação interativa com o seu público.
-                        Uma marca diferenciada, antenada ao seu público, que foge da mesmice
-                        e cai no gosto das pessoas. Traz o que é bom, saudável, 
-                        gostoso e o melhor "do seu jeito”.
-                    </p>
-
-                    <button class="comprar">COMPRAR</button>
-                </div>
+                        <h:commandButton class="comprar" value="COMPRAR" />
+                    </h:form>
             </div>
 
             <div class="conteiner-filho2">
-                <button class="itens-ml" onclick="mudarV1()">150ml</button>
-                <button class="itens-ml" onclick="mudarV2()">300ml</button>
-                <button class="itens-ml" onclick="mudarV3()">450ml</button>
-                <button class="itens-ml" onclick="mudarV4()">500ml</button>
+                <button type="button" class="itens-ml" onclick="mudarV1()">150ml</button>
+                <button type="button" class="itens-ml" onclick="mudarV2()">300ml</button>
+                <button type="button" class="itens-ml" onclick="mudarV3()">450ml</button>
+                <button type="button" class="itens-ml" onclick="mudarV4()">500ml</button>
             </div>
         </div>
         <h:outputScript library = "js" name = "meuscript.js" />
