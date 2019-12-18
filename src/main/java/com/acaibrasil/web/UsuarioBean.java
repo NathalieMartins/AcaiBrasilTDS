@@ -1,6 +1,10 @@
 package com.acaibrasil.web;
 
+import com.acaibrasil.data.AcaiDao;
+import com.acaibrasil.data.CompraDao;
 import com.acaibrasil.data.ConexaoHibernate;
+import com.acaibrasil.data.ItemDao;
+import com.acaibrasil.data.UsuarioDao;
 import com.acaibrasil.model.MoAcai;
 import com.acaibrasil.model.MoCompra;
 import com.acaibrasil.model.MoItem;
@@ -37,7 +41,7 @@ public class UsuarioBean {
            MoUsuario usuario = new MoUsuario();
            usuario.setCpf("12345");
            usuario.setEmail("raissap@alunos");
-           usuario.setNome("Raíssa");
+           usuario.setNome("João");
            usuario.setSenha(123);
            usuario.setTelefone("88181919");
            usuario.setTipousuario(new Long("1"));
@@ -47,10 +51,10 @@ public class UsuarioBean {
            compra.setUsuario(usuario);
         
          
-           MoAcai acai = new MoAcai();
-           acai.setCompra(compra);
-           acai.setTamanho("médio");
-           acai.setValor(new Double("10.89"));
+             MoAcai acai = new MoAcai();
+             //acai.setCompra(compra);
+            acai.setTamanho("grande");
+            acai.setValor(new Double("10.89"));
            
            
            MoItem item = new MoItem();
@@ -62,12 +66,30 @@ public class UsuarioBean {
 //           System.out.println(usuario);
            
            
-           ConexaoHibernate.getInstance().getTransaction().begin();
-           ConexaoHibernate.getInstance().persist(usuario);
-           ConexaoHibernate.getInstance().persist(compra);
-           ConexaoHibernate.getInstance().persist(acai);
-           ConexaoHibernate.getInstance().persist(item);
-           ConexaoHibernate.getInstance().getTransaction().commit();
+//           AcaiDao acaidao = new AcaiDao();
+             UsuarioDao usuariodao = new UsuarioDao();
+            usuariodao.save(usuario);
+            usuariodao.login(usuario);
+             
+          CompraDao compradao = new CompraDao();
+          compradao.save(compra);
+           
+           AcaiDao  acaidao = new AcaiDao();
+           acaidao.save(acai);
+           
+             ItemDao itemdao = new ItemDao();
+             itemdao.save(item);
+              MoUsuario u = usuariodao.login(usuario);
+             if( u == null){
+                 
+                        System.out.println("deu errado");
+                        return null;
+             }
+             
+             
+             
+             System.out.println(u);
+             
            
            return "index.xhtml";
        }

@@ -5,6 +5,7 @@
  */
 package com.acaibrasil.model;
 
+import com.acaibrasil.model.MoUsuario;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
