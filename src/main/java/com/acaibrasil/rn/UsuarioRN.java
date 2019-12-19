@@ -27,12 +27,12 @@ public class UsuarioRN {
 
 
 	public Boolean salvar(MoUsuario usuario) {
-            MoUsuario usuarioBD  = usuariodao.get(usuario.getEmail());
-            Boolean resultado;
+		MoUsuario usuarioBD  = usuariodao.get(usuario.getEmail());
+		Boolean resultado;
 		if (usuarioBD == null) {
 			usuario.setTipousuario(new Long("0")); 
 			this.usuariodao.save(usuario);
-                        resultado = true;
+			resultado = true;
 		} else {
 			resultado = false;
 		}

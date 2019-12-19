@@ -13,7 +13,7 @@
    
     <h:head> 
          <div id="container">
-            <div id="logotipo">
+            <div id="logotipo">does
                 <h:graphicImage library="imagens" name="logo.png" />
             </div>
             <div id="menu">                 		
@@ -34,11 +34,11 @@
             <h:messages /> 
             <h:panelGrid columns="2"> 
                 <h:outputLabel value="Nome:" for="nome" /> 
-                <h:inputText id="nome" label="Nome" value="#{usuarioBean.nome}" required="true" /> 
+                <h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" required="true" /> 
                 <h:outputLabel value="E-mail:" for="email" />
-                <h:inputText id="email" label="e-Mail" value="#{usuarioBean.email}" />
+                <h:inputText id="email" label="e-Mail" value="#{usuarioBean.usuario.email}" />
                 <h:outputLabel value="Senha:" for="senha" />
-                <h:inputSecret id="senha" label="Senha" value="#{usuarioBean.senha}" required="true" />
+                <h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" required="true" />
                 <h:outputLabel value="Confirmar Senha:" for="confirmarsenha" />
                 <h:inputSecret id="confirmarsenha" label="Confirmar Senha" value="#{usuarioBean.confirmaSenha}" 
                                required="true" />

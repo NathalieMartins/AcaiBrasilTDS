@@ -6,7 +6,6 @@
 package com.acaibrasil.data;
 
 import com.acaibrasil.model.MoUsuario;
-import com.mysql.jdbc.Connection;
 import java.util.List;
 import javax.persistence.TypedQuery;
 
@@ -20,15 +19,12 @@ public class UsuarioDao {
     public void save (MoUsuario usuario){
         ConexaoHibernate.getInstance().getTransaction().begin();
         ConexaoHibernate.getInstance().persist(usuario);
-       ConexaoHibernate.getInstance().getTransaction().commit();
+        ConexaoHibernate.getInstance().getTransaction().commit();
     }
 
     public List<MoUsuario> list(){
-        String sql = "select NEW ccom.acaibrasil.data" +
-            "(usuario.id,  usuario.nome, usuario.senha, usuario.email, " +
-            "usuario.telefone, usuario.cpf, " +
-            "usuario.TipoUsuario) " +
-            "from tb_usuario usuario";
+        String sql = "select u " +
+            "from MoUsuario u";
         TypedQuery<MoUsuario> query = ConexaoHibernate.getInstance().createQuery(sql, MoUsuario.class);
         return query.getResultList();
     }
@@ -36,11 +32,17 @@ public class UsuarioDao {
     public MoUsuario get(String email){
         String sql = "SELECT u "+
             "FROM MoUsuario u " +
-            "WHERE usuario.email = :email";
+            "WHERE u.email = :email";
             
         TypedQuery<MoUsuario> query = ConexaoHibernate.getInstance().createQuery(sql, MoUsuario.class);
         query.setParameter("email",email);
-        MoUsuario usuario = query.getSingleResult();
+        MoUsuario usuario = null;
+        try {
+            usuario = query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("O usuario não existe");
+        }
+        
         return usuario;
     }
 
@@ -49,15 +51,12 @@ public class UsuarioDao {
         ConexaoHibernate.getInstance().persist(usuario);
           ConexaoHibernate.getInstance().getTransaction().commit();
     }
-
-  
-    
     
     public MoUsuario login(MoUsuario usuario){
-        String sql = "select usuario "+
-                        "from MoUsuario usuario " +
-                        "where usuario.nome = :nome and " +
-                        "usuario.senha = :senha";
+        String sql = "select u "+
+            "from MoUsuario u " +
+            "where u.nome = :nome and " +
+            "u.senha = :senha";
         TypedQuery<MoUsuario> query = ConexaoHibernate.getInstance().createQuery(sql, MoUsuario.class);
         query.setParameter("nome",usuario.getNome());
         query.setParameter("senha",usuario.getSenha());
