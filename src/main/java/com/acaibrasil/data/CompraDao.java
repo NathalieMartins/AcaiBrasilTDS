@@ -22,14 +22,14 @@ public class CompraDao {
            ConexaoHibernate.getInstance().getTransaction().commit();
 
         }
-
-    public List<MoCompra> list(Long id){
-        String sql = "select NEW com.acaibrasil.data;" +
-            "(compra.id) " +
-            "from tb_compra compra";
-        TypedQuery<MoCompra> query = ConexaoHibernate.getInstance().createQuery(sql, MoCompra.class);
-        return query.getResultList();
-    }
+//
+//    public List<MoCompra> list(Long id){
+//        String sql = "select NEW com.acaibrasil.data;" +
+//            "(compra.id) " +
+//            "from tb_compra compra";
+//        TypedQuery<MoCompra> query = ConexaoHibernate.getInstance().createQuery(sql, MoCompra.class);
+//        return query.getResultList();
+//    }
 
     public MoCompra get(Long id){
         String sql = "SELECT compra "+
@@ -43,8 +43,7 @@ public class CompraDao {
         return compra;
     }
 
-    public void delete(Long id){
-        MoCompra compra = get(id);
+    public void delete(MoCompra compra){
         ConexaoHibernate.getInstance().getTransaction().begin();
         ConexaoHibernate.getInstance().persist(compra);
        ConexaoHibernate.getInstance().getTransaction().commit();

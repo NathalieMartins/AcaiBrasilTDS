@@ -43,10 +43,10 @@ public class UsuarioRN {
 
 	public void excluir(MoUsuario usuario) {
             
-             MoUsuario usuarioDE  = usuariodao.get(usuario.getNome());
+             MoUsuario usuarioDEL  = usuariodao.get(usuario.getNome());
              
               Boolean resultado;
-		if (usuarioDE != null) {
+		if (usuarioDEL != null) {
 			usuario.getNome(); 
 			this.usuariodao.delete(usuario);
                         resultado = true;

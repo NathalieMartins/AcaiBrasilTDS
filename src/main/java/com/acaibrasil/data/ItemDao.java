@@ -21,34 +21,36 @@ public class ItemDao {
         ConexaoHibernate.getInstance().persist(item);
        ConexaoHibernate.getInstance().getTransaction().commit();
     }
-//
-//    public List<MoItem> list(){
-//        String sql = "select NEW com.acaibrasil.data" +
-//            "(  item.descricao, item.valore) " +
-//            "from tb_item item";
-//        
-//        TypedQuery<MoItem> query = ConexaoHibernate.getInstance().createQuery(sql, MoItem.class);
-//        return query.getResultList();
-//    }
-//
-//    public MoItem get(String descricao){
-//        String sql = "SELECT item "+
-//            "FROM tb_item item " +
-//            "WHERE item.descricao = :descricao";
-//            
-//        TypedQuery<MoItem> query =  ConexaoHibernate.getInstance().createQuery(sql, MoItem.class);
-//        query.setParameter("descricao",descricao);
-//        MoItem item = query.getSingleResult();
-//
-//        return item;
-//    }
-//
-//    public void delete(String descricao){
-//        MoItem item = get(descricao);
-//       ConexaoHibernate.getInstance().getTransaction().begin();
-//        ConexaoHibernate.getInstance().persist(item);
-//       ConexaoHibernate.getInstance().getTransaction().commit();
-//    }
+
+    public List<MoItem> list(){
+        String sql = "select NEW com.acaibrasil.data" +
+            "(  item.descricao, item.valore) " +
+            "from tb_item item";
+        
+        TypedQuery<MoItem> query = ConexaoHibernate.getInstance().createQuery(sql, MoItem.class);
+        return query.getResultList();
+    }
+
+    public MoItem get(String descricao){
+        String sql = "SELECT item "+
+            "FROM tb_item item " +
+            "WHERE item.descricao = :descricao";
+            
+        TypedQuery<MoItem> query =  ConexaoHibernate.getInstance().createQuery(sql, MoItem.class);
+        query.setParameter("descricao",descricao);
+        MoItem item = query.getSingleResult();
+
+        return item;
+    }
+
+    public void delete(MoItem item){
+       ConexaoHibernate.getInstance().getTransaction().begin();
+        ConexaoHibernate.getInstance().persist(item);
+       ConexaoHibernate.getInstance().getTransaction().commit();
+    }
+
+   
+  
 
     
 }

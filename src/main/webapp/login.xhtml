@@ -25,11 +25,11 @@
             <h:messages /> 
             <h:panelGrid columns="2"> 
                 <h:outputLabel value="E-mail:" for="email" />
-                <h:inputText id="email" label="e-Mail" value="#{usuarioBean.email}" />
+                <h:inputText id="email" label="e-Mail" value="#{usuarioBean.usuario.email}" />
                 <h:outputLabel value="Senha:" for="senha" />
-                <h:inputSecret id="senha" label="Senha" value="#{usuarioBean.senha}" required="true" />
+                <h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" required="true" />
                 <h:outputText />
-                <h:commandButton action="#{usuarioBean.salvar}" value="Entrar" /> 
+                <h:commandButton action="#{usuarioBean.usuario.salvar}" value="Entrar" /> 
             </h:panelGrid>
         </h:form>
     </h:body>

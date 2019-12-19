@@ -1,0 +1,11 @@
+com\acaibrasil\model\MoUsuario.class
+com\acaibrasil\web\UsuarioBean.class
+com\acaibrasil\rn\UsuarioRN.class
+com\acaibrasil\data\AcaiDao.class
+com\acaibrasil\data\ConexaoHibernate.class
+com\acaibrasil\model\MoCompra.class
+com\acaibrasil\data\CompraDao.class
+com\acaibrasil\data\UsuarioDao.class
+com\acaibrasil\data\ItemDao.class
+com\acaibrasil\model\MoAcai.class
+com\acaibrasil\model\MoItem.class

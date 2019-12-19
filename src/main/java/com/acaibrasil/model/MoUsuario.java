@@ -19,7 +19,7 @@ public class MoUsuario implements Serializable {
     private String nome;
 
     @Column(name = "senha")
-    private int senha;
+    private String senha;
 
     @Column(name = "email")
     private String email;
@@ -49,11 +49,11 @@ public class MoUsuario implements Serializable {
         this.nome = nome;
     }
 
-    public int getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

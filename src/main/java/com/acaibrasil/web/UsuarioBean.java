@@ -1,14 +1,8 @@
 package com.acaibrasil.web;
 
-import com.acaibrasil.data.AcaiDao;
-import com.acaibrasil.data.CompraDao;
 import com.acaibrasil.data.ConexaoHibernate;
-import com.acaibrasil.data.ItemDao;
-import com.acaibrasil.data.UsuarioDao;
-import com.acaibrasil.model.MoAcai;
-import com.acaibrasil.model.MoCompra;
-import com.acaibrasil.model.MoItem;
 import com.acaibrasil.model.MoUsuario;
+import com.acaibrasil.rn.UsuarioRN;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
@@ -16,113 +10,119 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name="usuarioBean") // mapeamento 
 @RequestScoped  
-public class UsuarioBean {
-	private String nome;
-	private String email;
-	private String senha;
-	private String confirmaSenha;
-	
-	public String novo() { //(_1_)
-		return "usuario";
-	}
-	public String salvar() { //(_2_)
-		FacesContext context = FacesContext.getCurrentInstance(); 
-		if (!this.senha.equalsIgnoreCase(this.confirmaSenha)) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-				"Senha confirmada incorretamente",""));
-			return "usuario"; //(_3_)
-		}
-		// FUTURO - salva o usuï¿½rio
-		return "mostrausuario"; //(_4_)
-	}
 
-       public String Conexao(){
-           
-           MoUsuario usuario = new MoUsuario();
-           usuario.setCpf("12345");
-           usuario.setEmail("raissap@alunos");
-           usuario.setNome("João");
-           usuario.setSenha(123);
-           usuario.setTelefone("88181919");
-           usuario.setTipousuario(new Long("1"));
-           
-           
-           MoCompra compra = new MoCompra();
-           compra.setUsuario(usuario);
-        
+    public class UsuarioBean {
+    
+         private String nome;
+         private String senha;
+         private String email;
+         private String telefone;
+         private String cpf;
+//         private Long tiposuario;
+         private String confirmaSenha;
          
-             MoAcai acai = new MoAcai();
-             //acai.setCompra(compra);
-            acai.setTamanho("grande");
-            acai.setValor(new Double("10.89"));
+	private UsuarioRN rn  = new UsuarioRN();
+//        private MoUsuario usuario = new MoUsuario();
+        
+	
+	public String salvar() { 
+            
+             FacesContext context = FacesContext.getCurrentInstance();
+             MoUsuario usuario = new MoUsuario();
+             usuario.setNome(nome);
+             usuario.setSenha(senha);
+             usuario.setEmail(email);
+             usuario.setTelefone(telefone);
+             usuario.setCpf(cpf);
+            			
+                if(senha == confirmaSenha){
+                    
+                        FacesMessage senhaMessage = new FacesMessage("Senha incorreta");
+			context.addMessage(null, senhaMessage);
+                    }
+                         rn.salvar(usuario);
            
-           
-           MoItem item = new MoItem();
-           item.setAcai(acai);
-           item.setDescricao("banana e morango");
-           item.setValor(new Double("5.00"));
-           
-           
-//           System.out.println(usuario);
-           
-           
-//           AcaiDao acaidao = new AcaiDao();
-             UsuarioDao usuariodao = new UsuarioDao();
-            usuariodao.save(usuario);
-            usuariodao.login(usuario);
-             
-          CompraDao compradao = new CompraDao();
-          compradao.save(compra);
-           
-           AcaiDao  acaidao = new AcaiDao();
-           acaidao.save(acai);
-           
-             ItemDao itemdao = new ItemDao();
-             itemdao.save(item);
-              MoUsuario u = usuariodao.login(usuario);
-             if( u == null){
-                 
-                        System.out.println("deu errado");
-                        return null;
-             }
-             
-             
-             
-             System.out.println(u);
-             
-           
-           return "index.xhtml";
-       }
-       
-	public String getNome() {
-		return nome;
+		
+		if (!rn.salvar(usuario)) {
+			FacesMessage facesMessage = new FacesMessage("Não foi possível fazer um cadastro");
+			context.addMessage(null, facesMessage);
+			return null;
+		}
+
+              return null;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+            public UsuarioRN getRn() {
+                return rn;
+            }
 
-	public String getEmail() {
-		return email;
-	}
+            public void setRn(UsuarioRN rn) {
+                this.rn = rn;
+            }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+        //    public MoUsuario getUsuario() {
+        //        return usuario;
+        //    }
+        //
+        //    public void setUsuario(MoUsuario usuario) {
+        //        this.usuario = usuario;
+        //    }
 
-	public String getSenha() {
-		return senha;
-	}
+            public String getConfirmaSenha() {
+                return confirmaSenha;
+            }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+            public void setConfirmaSenha(String confirmaSenha) {
+                this.confirmaSenha = confirmaSenha;
+            }
 
-	public String getConfirmaSenha() {
-		return confirmaSenha;
-	}
+            public String getNome() {
+                return nome;
+            }
 
-	public void setConfirmaSenha(String confirmaSenha) {
-		this.confirmaSenha = confirmaSenha;
-	}
-}
+            public void setNome(String nome) {
+                this.nome = nome;
+            }
+
+            public String getSenha() {
+                return senha;
+            }
+
+            public void setSenha(String senha) {
+                this.senha = senha;
+            }
+
+            public String getEmail() {
+                return email;
+            }
+
+            public void setEmail(String email) {
+                this.email = email;
+            }
+
+            public String getTelefone() {
+                return telefone;
+            }
+
+            public void setTelefone(String telefone) {
+                this.telefone = telefone;
+            }
+
+            public String getCpf() {
+                return cpf;
+            }
+
+            public void setCpf(String cpf) {
+                this.cpf = cpf;
+            }
+
+        //    public Long getTiposuario() {
+        //        return tiposuario;
+        //    }
+        //
+        //    public void setTiposuario(Long tiposuario) {
+        //        this.tiposuario = tiposuario;
+        //    }
+
+            
+    }

@@ -22,36 +22,35 @@ public class AcaiDao {
        ConexaoHibernate.getInstance().persist(acai);
        ConexaoHibernate.getInstance().getTransaction().commit();
     }
-////    
-////    public List<MoAcai> list(){
-////        
-////        String sql = "select NEW com.acaibrasil.data;" +
-////            "(acai.id,  acai.valor, acai.tamanho ) " +
-////            "from Usuario u";
-//////        TypedQuery<MoAcai> query =  ConexaoHibernate.getInstance().createQuery(sql, MoAcai.class);
-////        return query.getResultList();
-////    }
-//
-//    public MoAcai get(Long id){
-//        
-//        String sql = "SELECT acai "+
-//            "FROM tb_acai acai " +
-//            "WHERE acai.tamanho = :tamanho";
-//            
-//        TypedQuery<MoAcai> query =  ConexaoHibernate.getInstance().createQuery(sql, MoAcai.class);
-//        query.setParameter("id",id);
-//        MoAcai acai = query.getSingleResult();
-//
-//        return acai;
-//    }
-//
-//    public void delete(Long id){
-//        
-//        MoAcai acai = get(id);
-//        ConexaoHibernate.getInstance().getTransaction().begin();
-//        ConexaoHibernate.getInstance().persist(acai);
-//       ConexaoHibernate.getInstance().getTransaction().commit();
-//    }
+    
+    public List<MoAcai> list(){
+        
+        String sql = "select NEW com.acaibrasil.data;" +
+            "(acai.id,  acai.valor, acai.tamanho ) " +
+            "from Acai a";
+      TypedQuery<MoAcai> query =  ConexaoHibernate.getInstance().createQuery(sql, MoAcai.class);
+        return query.getResultList();
+    }
+
+    public MoAcai get(Long id){
+        
+        String sql = "SELECT acai "+
+            "FROM tb_acai acai " +
+            "WHERE acai.tamanho = :tamanho";
+            
+        TypedQuery<MoAcai> query =  ConexaoHibernate.getInstance().createQuery(sql, MoAcai.class);
+        query.setParameter("id",id);
+        MoAcai acai = query.getSingleResult();
+
+        return acai;
+    }
+
+    public void delete(MoAcai acai){
+        
+        ConexaoHibernate.getInstance().getTransaction().begin();
+        ConexaoHibernate.getInstance().persist(acai);
+       ConexaoHibernate.getInstance().getTransaction().commit();
+    }
 
     
 }
